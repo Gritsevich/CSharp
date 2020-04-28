@@ -1,0 +1,38 @@
+using System;
+
+namespace _3L
+{
+    class Transport
+    {
+        public string Number { get; set; }
+
+        public Transport(string number, string name)
+        {
+            Number = number;
+
+            Console.WriteLine(name);
+            Console.WriteLine("number " + Number );
+        }
+    }
+
+    class Cars : Transport
+    {
+        private int speed;
+        public Cars(int speed, string number,string name) : base (number,name)
+        {
+            this.speed = speed;
+            Console.WriteLine("speed " + speed + "\n");
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Cars CHRYSLER = new Cars(324, "46565", "CHRYSLER");
+            Cars DS = new Cars(245, "53642","DS");
+            Cars BUICK = new Cars(180,"32342", "BUICK");
+            Cars McLAREN = new Cars(310,"36362", "McLAREN");
+        }
+    }
+}
