@@ -1,12 +1,11 @@
 using System;
 
+namespace _1L1 {
 
-namespace _1L1
-{
-    class Program
-    {
-        static void words()
-        {
+    class Program {
+    
+        static void choose() {
+
             Console.WriteLine();
 
             Console.WriteLine("какое вычисление вы выберете?  ");
@@ -16,103 +15,115 @@ namespace _1L1
 
             Console.WriteLine();
         }
-        static int[,] symma(int [,] one, int [,] two)
-        {
+        static int[,] symma (int [,] one, int [,] two) {
+
             int[,] sum = new int[3, 3];
-            for (int i=0; i<3;i++ )                               
-            {
-                for(int j=0; j<3; j++)                                       /*сумма*/
-                {
-                    sum[i, j] = one[i, j]+two[i,j];
+
+            for (int i = 0; i < 3; i++ ) {
+
+                for (int j = 0; j < 3; j++) {                              /*сумма матриц*/
+
+                    sum[i, j] = one[i, j] + two[i, j];
                 }
             }
+
             return sum;
         }
 
-        static int[,] difference(int[,] one, int[,] two)
-        {
+        static int[,] difference (int[,] one, int[,] two) {
+
             int[,] dif = new int[3, 3];
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    dif[i, j] = one[i, j] - two[i, j];                   /* разность*/
+
+            for (int i = 0; i < 3; i++) {
+
+                for (int j = 0; j < 3; j++) {
+                
+                    dif[i, j] = one[i, j] - two[i, j];                   /* разность матриц*/
                 }
             }
+
             return dif;
         }
 
-        static int[,] composition(int[,] one, int[,] two)
-        {
+        static int[,] composition (int[,] one, int[,] two) {
+
             int[,] com = new int[3, 3];
-            for (int j=0;j<3 ; j++)
-            {
-                for (int i = 0; i < 3; i++)                                    /*произведение*/
-                {
-                    com[i, j] = one[i, 0] * two[0, j] + one[i, 1] * two[1, j] + one[i, 2] * two[2, j];
+
+            for (int j = 0;j < 3 ; j++) {
+
+                for (int i = 0; i < 3; i++) {                              /*произведение матриц*/
+
+                    com[i, j] = one[i, 0] * two[0, j] + 
+                                one[i, 1] * two[1, j] +
+                                one[i, 2] * two[2, j];
                 }
             }
+
             return com;
         }
 
-        static void Main(string[] args)
-        {
+        static void Main (string[] args) {
+
             int[,] one = new int[3, 3];
             int[,] two = new int[3,3];
             int[,] three = new int[3, 3];
 
-            Console.WriteLine("введите первый массив  ");
+            Console.WriteLine("введите первую матрицу  ");
 
-            for (int i = 0 ; i < 3; i++)
-            {
-                for (int j=0; j < 3; j++)
-                {                                                              /*заполнение первого массива*/
+            for (int i = 0 ; i < 3; i++) {
+
+                for (int j = 0; j < 3; j++) { 
+                                                                             /*заполнение первой матрицы*/
                     one[i, j]= int.Parse(Console.ReadLine()); 
                 }
+
                 Console.WriteLine();
             }
            
-            Console.WriteLine("введите второй массив  ");
+            Console.WriteLine("введите вторую матрицу  ");
 
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    two[i, j] = int.Parse(Console.ReadLine());                /*заполнение второго массива*/
+            for (int i = 0; i < 3; i++) {
+
+                for (int j = 0; j < 3; j++) { 
+                
+                    two[i, j] = int.Parse(Console.ReadLine());                /*заполнение второй матрицы*/
                 }
+
                 Console.WriteLine();
             }
 
-            words();
+            choose();                                                     /*вызов функции выбора действия*/
 
             int operation;
+                                                                         //ввод операции цифрой
             operation= int.Parse(Console.ReadLine());
 
-            if (operation == 1)
-            {
-               three= symma(one, two);
+            if (operation == 1) {
+
+                three = symma(one, two);
             }
 
-            if (operation == 2)                                         /* вызов функций*/
-            {
+            if (operation == 2) {                                        /* вызов функции с учётом операции */
+            
                 three = difference(one, two);
             }
 
-            if (operation == 3)
-            {
+            if (operation == 3) { 
+            
                 three = composition(one, two);
             }
 
             Console.WriteLine();
 
-            Console.Clear();
+            Console.Clear();                                                /*очистка консоли*/
 
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    Console.Write("{0}\t", three[i, j]);                       /*вывод на экран*/
+            for (int i = 0; i < 3; i++) { 
+            
+                for (int j = 0; j < 3; j++) { 
+                
+                    Console.Write("{0}\t", three[i, j]);                       /*вывод ответа на экран*/
                 }
+
                 Console.WriteLine();
             }
         }
