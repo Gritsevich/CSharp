@@ -1,38 +1,118 @@
 using System;
 
 namespace _3L
+
 {
     class Transport
     {
-        public string Number { get; set; }
+        private string color;
+        private string brand;
+        private int speed;
+        public static int ID;
 
-        public Transport(string number, string name)
+        public Transport() : this("Неизвестно")
         {
-            Number = number;
-
-            Console.WriteLine(name);
-            Console.WriteLine("number " + Number );
         }
+        public Transport(string i) : this(i, 0, "Неизвестно")
+        {
+        }
+        public Transport(string i, string k) : this(i, 0, k)
+        {
+        }
+        public Transport(string i, int j) : this(i, j, "Неизвестно")
+        {
+        }
+        public Transport(int j, string k) : this("Неизвестно", j, k)
+        {
+        }
+        public Transport( string i, int j, string k)
+        {
+            brand = i;
+            speed = j;
+            color = k;
+        }
+
+
+        public void setValue( string brandValue, string colorValue)
+        {
+            brand = brandValue;
+            color = colorValue;
+        }
+        public string getColor()
+        {
+            return color;
+        }
+        public string getBrand()
+        {
+            return brand;
+        }
+
+        public void setValue(int speedValue)
+        {
+            speed = speedValue;
+        }
+        public int getspeed()
+        {
+            return speed;
+        }
+
+        public void getInfo()
+        {
+            Console.WriteLine($"Марка: {brand} \nСкорость: {speed} \nЦвет: {color}");
+        }
+
     }
 
-    class Cars : Transport
+    class Car
     {
-        private int speed;
-        public Cars(int speed, string number,string name) : base (number,name)
+        Transport[] data;
+        public Car(int a)
         {
-            this.speed = speed;
-            Console.WriteLine("speed " + speed + "\n");
+            data = new Transport[a];
+        }
+
+        public Transport this[int index]
+        {
+            get
+            {
+                return data[index];
+            }
+            set
+            {
+                data[index] = value;
+            }
         }
     }
 
     class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
-            Cars CHRYSLER = new Cars(324, "46565", "CHRYSLER");
-            Cars DS = new Cars(245, "53642","DS");
-            Cars BUICK = new Cars(180,"32342", "BUICK");
-            Cars McLAREN = new Cars(310,"36362", "McLAREN");
+            int arr = 3;
+            Random rnd = new Random();
+            Car cars = new Car(arr);
+
+            cars[0] = new Transport();
+            cars[0].setValue("CHRYSLER", "Чёрный");
+            cars[0].setValue(430);
+
+            cars[1] = new Transport("DS", 340, "Белый");
+
+            cars[2] = new Transport("McLAREN", "Красный");
+            cars[2].setValue(450);
+
+            cars[0].getInfo();
+            Transport.ID = rnd.Next(100000, 999999);
+            Console.WriteLine($"ID: {Transport.ID}\n");
+
+            cars[1].getInfo();
+            Transport.ID = rnd.Next(100000, 999999);
+            Console.WriteLine($"ID: {Transport.ID}\n");
+
+            cars[2].getInfo();
+            Transport.ID = rnd.Next(100000, 999999);
+            Console.WriteLine($"ID: {Transport.ID}\n");
+
         }
     }
 }
