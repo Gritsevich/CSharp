@@ -1,0 +1,35 @@
+using System;
+namespace _5L
+{
+    class Mark : Car    {
+        public struct parameter {
+           public string  markYear;
+           public string mainNumber;
+
+        }
+
+        public parameter  markStruct;
+
+        public  Mark() : this("Неизвестно",0, "Неизвестно", 0, "Неизвестно", "Неизвестно")
+        {
+            ID = 0;
+        }
+        public  Mark(string a, int b, string c, tonnageNum f, string g, string h)
+        {
+            brand = a;
+            speed = b;
+            color = c;
+            ID = generateID();
+            tonnage = (int)f;
+            markStruct. markYear= g;
+            markStruct.mainNumber = h;
+        }
+
+        public override void getInfo()
+        {
+            base.getInfo();
+            Console.WriteLine($"Год выпуска: {markStruct.markYear}");
+            Console.WriteLine($"Номер: {markStruct.mainNumber}");
+        }
+    }
+}
