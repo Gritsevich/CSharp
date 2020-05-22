@@ -1,0 +1,11 @@
+using System;
+namespace _8L
+{
+    public interface FgasPetrol
+    {
+        static int[] arrayPetrol = new int[3];
+
+        double gasPetrol();
+        void checkCost(double gas);
+    }
+}
