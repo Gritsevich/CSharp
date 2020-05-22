@@ -83,11 +83,11 @@ namespace _6L
 
         public int CompareTo(object obj)
         {
-            if (this.getAge() > ((Mark)obj).getAge())
+            if (this.getResult() > ((Mark)obj).getResult())
             {
                 return 1;
             }
-            else if (this.getAge() < ((Mark)obj).getAge())
+            else if (this.getResult() < ((Mark)obj).getResult())
             {
                 return -1;
             }
