@@ -1,0 +1,39 @@
+using System;
+namespace _6L
+{
+    enum tonnageNum
+    {
+        First = 1,
+        Second,
+        Third,
+        Fourth
+    }
+
+    class Car :Transport
+    {
+        public int tonnage;
+
+        public Car() : this("Неизвестно", 0, "Неизвестно", 0)
+        {          
+        }
+        public Car(string a, int b, string c, tonageNum f)
+        {
+            brand = a;
+            speed = b;
+            color = c;
+            ID = generateID();
+            tonnage = (int)f;
+        }
+
+        public override void getInfo()
+        {
+            Console.WriteLine($"Марка: {brand}");
+            Console.WriteLine($"Скорость: {speed}");
+            Console.WriteLine($"Цвет: {color}");
+            Console.WriteLine($"Грузоподъёмность: {tonnage}");
+            Console.WriteLine($"ID: {ID}");
+        }
+
+
+    }
+}
