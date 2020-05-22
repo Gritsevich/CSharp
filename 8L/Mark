@@ -1,0 +1,90 @@
+using System;
+namespace _8L
+{
+    class Mark : Car, FgasPetrol                        
+    {
+        public struct parameter
+        {
+            public string markYear;
+            public string mainNumber;
+
+        }
+
+        public delegate void forEvent(string mes);
+        public event forEvent checkResult;                                               
+        public event forEvent checkgasPetrol;
+
+        public parameter markStruct;
+        double gas;
+
+        public Mark() : this("Неизвестно", 0, "Неизвестно", 0, "Неизвестно", "Неизвестно")
+        {
+            ID = 0;
+        }
+        public Mark(string a, int b, string c, tonnageNum f, string g, string h)
+        {
+            brand = a;
+            speed = b;
+            color = c;
+            ID = generateID();
+            tonnage = (int)f;
+            gas = gasPetrol();
+            markStruct.markYear = g;
+            markStruct.mainNumber = h;
+        }
+
+        public override void getInfo()
+        {
+            Console.WriteLine($"Марка: {brand}");
+            checkResult?.Invoke($"Скорость: {speed}");
+            Console.ResetColor();
+            Console.WriteLine($"Цвет: {color}");
+            Console.WriteLine($"Грузоподъёмность: {tonnage}");
+            Console.WriteLine($"Год выпуска: {markStruct.markYear}");
+            Console.WriteLine($"Номер: {markStruct.mainNumber}");
+            checkgasPetrol?.Invoke($"Среднее вмещение топлива: {Math.Round(gas, 2)}");               
+            checkCost(gas);
+            Console.ResetColor();
+            Console.WriteLine($"ID: {ID}");
+            Console.WriteLine("");
+        }
+
+        public double gasPetrol()
+        {
+
+            Random rnd = new Random();
+            double sum = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                FgasPetrol.arrayPetrol[i] = rnd.Next(1, 60);
+                sum += FgasPetrol.arrayPetrol[i];
+            }
+
+            return sum / 3;
+        }
+
+        public void checkCost(double gas)
+        {
+            string levelOfCapacity = "";
+
+            if (gas > 55)
+            {
+                levelOfCapacity = "Высокая";
+            }
+            else if (gas > 50)
+            {
+                levelOfCapacity = "Хорошая";
+            }
+            else if (gas >40)
+            {
+                levelOfCapacity = "Обычная";
+            }
+            else if (gas < 40)
+            {
+                levelOfCapacity = "Низкая";
+            }
+
+            Console.WriteLine($"Вместимость: {levelOfCapacity}");
+        }
+    }
+}
