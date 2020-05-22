@@ -1,0 +1,74 @@
+using System;
+namespace _6L
+
+{
+    class Transport
+    {
+        private string color;
+        private string brand;
+        private int speed;
+        public static int ID;
+
+        public Transport() : this("Неизвестно")
+        {
+        }
+        public Transport(string i) : this(i, 0, "Неизвестно")
+        {
+        }
+        public Transport(string i, string k) : this(i, 0, k)
+        {
+        }
+        public Transport(string i, int j) : this(i, j, "Неизвестно")
+        {
+        }
+        public Transport(int j, string k) : this("Неизвестно", j, k)
+        {
+        }
+        public Transport( string i, int j, string k)
+        {
+            brand = i;
+            speed = j;
+            color = k;
+        }
+
+        public void setValue( string brandValue, string colorValue)
+        {
+            brand = brandValue;
+            color = colorValue;
+        }
+        public string getColor()
+        {
+            return color;
+        }
+        public string getBrand()
+        {
+            return brand;
+        }
+
+        public void setValue(int speedValue)
+        {
+            speed = speedValue;
+        }
+        public int getspeed()
+        {
+            return speed;
+        }
+
+        public virtual void getInfo()
+        {
+            Console.WriteLine($"Марка: {brand}");
+            Console.WriteLine($"Скорость: {speed}");
+            Console.WriteLine($"Цвет: {color}");
+            Console.WriteLine($"ID: {ID}");
+            Console.WriteLine("");
+        }
+
+
+        public int generateID()
+        {
+            Random rnd = new Random();
+            return ID = rnd.Next(100000, 999999);
+        }
+
+    }
+}
