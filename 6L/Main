@@ -1,0 +1,24 @@
+using System;
+
+namespace _6L
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Mark[] array = new Mark[5];
+            array[0] = new  Mark("Chrysler", 430, "Чёрный", (tonnageNum)1, "2004", "АА11111");
+            array[1] = new  Mark("Alfa Romeo", 270, "Красный", (tonnageNum)1, "2010", "АА14511");
+            array[2] = new  Mark("Bentley", 330, "Чёрный", (tonnageNum)2, "2007", "АА56711");
+            array[3] = new  Mark("DS", 250, "Белый", (tonnageNum)1, "2008", "АА34111");
+            array[4] = new  Mark("Infiniti", 340, "Синий", (tonnageNum)1, "2001", "АА18911");
+
+            Array.Sort(array);
+
+            for (int i = 0; i < 5; i++)
+            {
+                array[i].getInfo();
+            }
+        }
+    }
+}
