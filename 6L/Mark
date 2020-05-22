@@ -50,7 +50,7 @@ namespace _6L
             double sum = 0;
             for (int i = 0; i < 3; i++)
             {
-                FgasPetrol.arrayPetrol[i] = rnd.Next(1, 60);
+                FgasPetrol.arrayPetrol[i] = rnd.Next(20, 60);
                 sum += FgasPetrol.arrayPetrol[i];
             }
 
